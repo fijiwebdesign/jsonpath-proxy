@@ -1,6 +1,6 @@
 {
   "name": "jsonpath-proxy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSONPath expressions as first class JS object properties",
   "main": "index.js",
   "scripts": {
