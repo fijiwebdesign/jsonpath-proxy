@@ -4,7 +4,7 @@ const mockJSON = require('./mockJSON.json')
 
 describe("jsonpath-query", () => {
 
-  const $ = JSONPath(mockJSON)
+  const $ = JSONPath.$(mockJSON)
 
   it('Extends jsonpath', () => {
     const actual = jp.query(mockJSON, '$.store.book[*].author')

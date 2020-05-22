@@ -23,7 +23,7 @@ var cities = [
   { name: "Rome",   "population": 2870528 }
 ];
 
-var $ = jsonpath(cities);
+var $ = jsonpath.$(cities);
 var names = $['..'].name;
 
 // [ "London", "Berlin", "Madrid", "Rome" ]
@@ -38,8 +38,8 @@ var cities = [
   { name: "Rome",   "population": 2870528 }
 ];
 
-var jp = require('jsonpath');
-var names = jp.query(cities, '$..name');
+const jsonpath = require('jsonpath-proxy') // same as require('jsonpath')
+var names = jsonpath.query(cities, '$..name');
 
 // [ "London", "Berlin", "Madrid", "Rome" ]
 ```
@@ -106,7 +106,7 @@ Given this sample data set, see example expressions below:
 }
 ```
 
-Example `jsonpath-proxy` expressions:
+Example `jsonpath-proxy.$` expressions:
 
 JSONPath                      | Description
 ------------------------------|------------
@@ -125,7 +125,7 @@ JSONPath                      | Description
 `$[".."]book["[?(@.price<30 && @.category=="fiction")]"]`        | Filter all fiction books cheaper than 30
 `$[".."]["*"]`                         | All members of JSON structure
 
-Example `jsonpath` expressions:
+Example `jsonpath.query` expressions:
 
 JSONPath                      | Description
 ------------------------------|------------

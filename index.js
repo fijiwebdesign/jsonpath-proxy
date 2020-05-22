@@ -40,6 +40,9 @@ function JSONPath(obj) {
   }
 }
 
+// fancy
+JSONPath.$ = JSONPath
+
 // extend jsonpath
 const proto = typeof Object.getPrototypeOf === 'function' ? Object.getPrototypeOf(jp) : jp.__proto__
 const methods = Object.keys(proto).reduce((next, key) =>{
