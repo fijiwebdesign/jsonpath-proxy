@@ -1,0 +1,22 @@
+{
+  "name": "json-path",
+  "version": "1.0.0",
+  "description": "JSONPath expressions as first class JS object properties",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "JSONPath",
+    "nodejs",
+    "JSON"
+  ],
+  "author": "gabe@fijiwebdesign.com",
+  "license": "MIT",
+  "dependencies": {
+    "jsonpath": "^1.0.2"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
