@@ -48,7 +48,7 @@ var names = jsonpath.query(cities, '$..name');
 
 Install from npm:
 ```bash
-$ npm install jsonpath
+$ npm install jsonpath-proxy
 ```
 
 ## JSONPath Syntax
@@ -143,3 +143,11 @@ JSONPath                      | Description
 `$..book[?(@.price==8.95)]`        | Filter all books that cost 8.95
 `$..book[?(@.price<30 && @.category=="fiction")]`        | Filter all fiction books cheaper than 30
 `$..*`                         | All members of JSON structure
+
+## All other `jsonpath` api methods
+
+@see https://github.com/json-path/JsonPath
+
+## License
+
+MIT
