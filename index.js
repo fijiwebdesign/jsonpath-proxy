@@ -14,19 +14,22 @@ module.exports = function JSONPath(obj) {
             result = obj[prop]
           } else {
             // .. requires STAR,IDENTIFIER,SCRIPT_EXPRESSION,INTEGER,END 
-            if (prop === '..') prop = '.*'
-            // arrays need to be backtracked
-            if (Array.isArray(obj) && prop !== '*') {
+            if (prop === '..') {
+              path = '$..*'
+            } else if (prop.includes('[')) {
+              path = `$.*${prop}` 
+            } else if (Array.isArray(obj) && prop !== '*') {
+              // arrays need to be backtracked
               path = `$.*.${prop}`
             } else {
-              path = `$.${prop}`
+              path = `$[${prop}]`
             }
             result = jp.query(obj, path)
           }
-          console.log('get', { obj, prop, path, result })
+          //console.log('get', { obj, prop, path, result })
         } catch(err) {
           result = obj[prop]
-          console.warn('Error', { obj, prop, path, result, err })
+          //console.warn('Error', { obj, prop, path, result, err })
           return result
         }
         return JSONPath(result)
