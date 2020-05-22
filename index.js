@@ -4,7 +4,7 @@ const jp = require('jsonpath')
  * @todo we need to build the whole path instead of recursing
  * The smaller queries from dereference point have quirks
  */
-module.exports = function JSONPath(obj) {
+function JSONPath(obj) {
   try {
     return new Proxy(obj, {
       get(obj, prop) {
@@ -22,7 +22,7 @@ module.exports = function JSONPath(obj) {
               // arrays need to be backtracked
               path = `$.*.${prop}`
             } else {
-              path = `$[${prop}]`
+              path = jp.stringify(prop)
             }
             result = jp.query(obj, path)
           }
@@ -39,3 +39,12 @@ module.exports = function JSONPath(obj) {
     return obj
   }
 }
+
+// extend jsonpath
+const proto = typeof Object.getPrototypeOf === 'function' ? Object.getPrototypeOf(jp) : jp.__proto__
+const methods = Object.keys(proto).reduce((next, key) =>{
+  return { ...next, [key]: typeof proto[key] === 'function' ? proto[key].bind(jp) : proto[key] }
+}, {})
+Object.assign(JSONPath, methods)
+
+module.exports = JSONPath

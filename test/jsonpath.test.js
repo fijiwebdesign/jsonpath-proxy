@@ -2,9 +2,15 @@ const JSONPath = require('../index')
 const jp = require('jsonpath')
 const mockJSON = require('./mockJSON.json')
 
-describe("json-path", () => {
+describe("jsonpath-query", () => {
 
   const $ = JSONPath(mockJSON)
+
+  it('Extends jsonpath', () => {
+    const actual = jp.query(mockJSON, '$.store.book[*].author')
+    const expected = JSONPath.query(mockJSON, '$.store.book[*].author')
+    expect(expected).toEqual(actual)
+  })
 
   it('Root and deferencing', () => {
     expect($).toEqual(mockJSON)
