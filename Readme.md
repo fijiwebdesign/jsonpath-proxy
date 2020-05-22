@@ -2,7 +2,7 @@
 
 JSONPath expressions as first class JS object properties
 
-Proxies [jsonpath](https://github.com/json-path/JsonPath) queries as JS object property chain
+Proxies [jsonpath](https://www.npmjs.com/package/jsonpath) queries as JS object property chain
 
 ## Usage
 
@@ -146,7 +146,7 @@ JSONPath                      | Description
 
 ## All other `jsonpath` api methods
 
-@see https://github.com/json-path/JsonPath
+@see https://www.npmjs.com/package/jsonpath
 
 ## License
 
